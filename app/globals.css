@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
+/**
+ * THEME — change accent here for brand color sitewide (--accent, --accent-soft).
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --accent: #0d9488;
+  --accent-soft: #ccfbf1;
+  /** Pricing cards — yellow/black reference; change here to retheme the grid only */
+  --pricing-yellow: #facc15;
+  --pricing-yellow-hover: #eab308;
 }
 
 @theme inline {
@@ -12,15 +20,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
