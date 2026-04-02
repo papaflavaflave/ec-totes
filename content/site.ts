@@ -18,26 +18,50 @@ export const nav = {
 };
 
 export const hero = {
+  /** Small label above the headline — emojis optional */
+  eyebrow: "🏠 Local · ♻️ Reusable · 🚚 Delivered",
   headline: "Move with sturdy bins—not a mountain of cardboard.",
   subheadline:
     "We drop off stackable plastic totes for your move and pick them up when you're done. Simple pricing. Local service. Less waste, less tape, less stress.",
 };
+
+/** Three-up trust cards (emoji + title + line) — edit copy anytime */
+export const trustHighlights = [
+  {
+    emoji: "🏠",
+    title: "Eau Claire family business",
+    subtext: "Serving our community since 2026",
+  },
+  {
+    emoji: "♻️",
+    title: "100% eco-friendly",
+    subtext: "Sustainable moving solutions",
+  },
+  {
+    emoji: "⭐",
+    title: "Professional service",
+    subtext: "Reliable & on-time delivery",
+  },
+] as const;
 
 export const howItWorks = {
   title: "How it works",
   subtitle: "Three steps from quote to empty nest.",
   steps: [
     {
+      emoji: "📋",
       title: "Tell us about your move",
       description:
         "Share dates, addresses, and how many bins you need. We'll confirm availability and pricing.",
     },
     {
+      emoji: "🚚",
       title: "We deliver to your door",
       description:
         "Totes arrive clean and ready to pack—stackable, sturdy, and easy to carry. A dolly is included with every package.",
     },
     {
+      emoji: "📦",
       title: "Move, then we pick up",
       description:
         "Unpack at your pace. When you're done, we collect the bins so you're not stuck with boxes to break down.",
@@ -105,14 +129,17 @@ export const whyTotes = {
   subtitle: "Built for real moves—not one-trip boxes.",
   points: [
     {
+      emoji: "💪",
       title: "Stronger and stackable",
       body: "Rigid walls protect dishes and books. Stack safely without crushing what's underneath.",
     },
     {
+      emoji: "✨",
       title: "No tape spiral",
       body: "Lidded bins snap shut. Spend time packing, not building and sealing boxes.",
     },
     {
+      emoji: "🌧️",
       title: "Reusable and cleaner",
       body: "No soggy cardboard on rainy days—and no pile of boxes at the curb when you're done.",
     },

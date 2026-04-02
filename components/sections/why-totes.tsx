@@ -11,6 +11,9 @@ export function WhyTotes() {
         <ul className="mt-10 grid gap-8 sm:grid-cols-3">
           {whyTotes.points.map((p) => (
             <li key={p.title}>
+              <span className="mb-2 block text-2xl leading-none" aria-hidden>
+                {p.emoji}
+              </span>
               <h3 className="text-lg font-semibold text-zinc-900">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600">{p.body}</p>
             </li>

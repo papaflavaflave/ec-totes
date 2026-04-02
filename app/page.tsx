@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/sections/hero";
+import { TrustHighlights } from "@/components/sections/trust-highlights";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Pricing } from "@/components/sections/pricing";
 import { WhyTotes } from "@/components/sections/why-totes";
@@ -14,6 +15,7 @@ export default function Home() {
       <SiteHeader />
       <main className="flex flex-1 flex-col">
         <Hero />
+        <TrustHighlights />
         <HowItWorks />
         <Pricing />
         <WhyTotes />

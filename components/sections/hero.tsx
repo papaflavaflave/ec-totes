@@ -5,7 +5,7 @@ export function Hero() {
     <section className="border-b border-zinc-100 bg-gradient-to-b from-zinc-50 to-white px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-5xl">
         <p className="mb-3 text-sm font-medium uppercase tracking-wide text-[var(--accent)]">
-          Local · Reusable · Delivered
+          {hero.eyebrow}
         </p>
         <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl">
           {hero.headline}
