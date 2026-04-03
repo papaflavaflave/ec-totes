@@ -203,5 +203,5 @@ export const reservation = {
 export const footer = {
   note: "Local moving tote rental. Questions? Use the form above—we read every message.",
   /** EDIT — add your public email or phone when ready */
-  contactLine: "Prefer email? Add your address here once you have one.",
+  contactLine: "",
 };
