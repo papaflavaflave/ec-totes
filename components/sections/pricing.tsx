@@ -3,7 +3,8 @@ import { pricingFootnote, pricingPackages } from "@/content/site";
 export function Pricing() {
   return (
     <section
-      className="border-y border-zinc-200 bg-zinc-100 px-4 py-16 sm:px-6 sm:py-20"
+      id="pricing"
+      className="scroll-mt-24 border-y border-zinc-200 bg-zinc-100 px-4 py-16 sm:px-6 sm:py-20"
       aria-labelledby="pricing-heading"
     >
       <div className="mx-auto max-w-6xl">

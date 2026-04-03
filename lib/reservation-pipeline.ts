@@ -73,7 +73,7 @@ async function sendReservationEmail(data: ReservationFormValues): Promise<boolea
 
   if (error) {
     console.error("[reservation] Resend error:", error);
-    throw new Error("Failed to send email");
+    return false;
   }
 
   return true;
