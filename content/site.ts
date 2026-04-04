@@ -23,7 +23,7 @@ export const hero = {
   subheadline:
     "We drop off stackable plastic totes for your move and pick them up when you're done. Simple pricing. Local service. Less waste, less tape, less stress.",
   bullets: [
-    "Heavy-duty stackable totes with secure lids—no tape orgy.",
+    "Heavy-duty stackable totes with secure lids—no tape marathon.",
     "We deliver clean bins and pick them up when you're unpacked.",
     "Local Eau Claire service with transparent package pricing.",
   ] as const,
