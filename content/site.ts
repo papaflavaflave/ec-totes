@@ -185,7 +185,7 @@ export const faq = {
     },
     {
       q: "Can my realtor refer me?",
-      a: "Absolutely. Select “yes” for realtor referral on the form so we can thank them and keep your booking organized.",
+      a: "Absolutely. Enter your realtor’s name in the optional field on the form so we can thank them and keep your booking organized.",
     },
     {
       q: "How do I pay?",

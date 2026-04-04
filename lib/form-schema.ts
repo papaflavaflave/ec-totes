@@ -20,7 +20,7 @@ export const reservationFormSchema = z.object({
   binCount: z.coerce.number().int().min(1, "At least 1 bin").max(500),
   dollyNeeded: yesNo,
   stairsInvolved: yesNo,
-  realtorReferral: yesNo,
+  realtorName: z.string().max(200),
   notes: z.string().max(2000),
 });
 

@@ -21,6 +21,7 @@ const defaultValues: DefaultValues<ReservationFormValues> = {
   currentAddress: "",
   newAddress: "",
   notes: "",
+  realtorName: "",
   binCount: undefined,
 };
 
@@ -31,7 +32,7 @@ function YesNoField({
   register,
 }: {
   legend: string;
-  name: "dollyNeeded" | "stairsInvolved" | "realtorReferral";
+  name: "dollyNeeded" | "stairsInvolved";
   error?: string;
   register: UseFormRegister<ReservationFormValues>;
 }) {
@@ -314,12 +315,23 @@ export function ReservationForm() {
           error={errors.stairsInvolved?.message}
           register={register}
         />
-        <YesNoField
-          legend="Realtor referral?"
-          name="realtorReferral"
-          error={errors.realtorReferral?.message}
-          register={register}
-        />
+        <div>
+          <label htmlFor="realtorName" className="text-sm font-medium text-zinc-800">
+            Realtor name <span className="font-normal text-zinc-500">(optional)</span>
+          </label>
+          <input
+            id="realtorName"
+            type="text"
+            autoComplete="off"
+            placeholder="If a realtor referred you, enter their name"
+            aria-invalid={!!errors.realtorName}
+            className={inputClass}
+            {...register("realtorName")}
+          />
+          {errors.realtorName && (
+            <p className="mt-1 text-sm text-red-600">{errors.realtorName.message}</p>
+          )}
+        </div>
       </div>
 
       <div>
