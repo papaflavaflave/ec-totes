@@ -105,7 +105,7 @@ export const pricingPackages = [
     id: "3-bed",
     name: "3-Bedroom",
     price: "$189",
-    includes: "55 totes + dolly",
+    includes: "50 totes + dolly",
     highlighted: true,
   },
   {
