@@ -153,15 +153,11 @@ export const whyTotes = {
 };
 
 /**
- * EDIT SERVICE AREA — cities / regions you serve (display only for MVP).
+ * EDIT SERVICE AREA — copy shown on the landing page.
  */
 export const serviceArea = {
   title: "Where we deliver",
-  intro:
-    "We're a local team focused on moves in our community. Start with a reservation and we'll confirm your addresses.",
-  /** List the areas you actually cover; customers still submit addresses on the form for verification */
-  regions: ["Downtown & nearby neighborhoods", "North County corridor", "Eastside communities"],
-  note: "Not sure if you're in range? Submit the form—we'll reply with availability.",
+  body: "We deliver within a ~30-minute radius of Eau Claire. Not sure if you're in range? Submit a reservation and we'll confirm.",
 };
 
 export const faq = {
