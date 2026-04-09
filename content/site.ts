@@ -83,7 +83,7 @@ export type RentalPeriod = "2-week" | "4-week";
 
 export const rentalPeriodOptions = [
   { value: "2-week" as const, label: "2-Week Rental" },
-  { value: "4-week" as const, label: "4-Week Rental (Save 25%)" },
+  { value: "4-week" as const, label: "4-Week Rental" },
 ] as const;
 
 export const pricingPackages = [
@@ -92,7 +92,7 @@ export const pricingPackages = [
     name: "Studio",
     totes: 20,
     price2Week: "$99",
-    price4Week: "$74",
+    price4Week: "$149",
     includes: "20 totes + dolly",
     lateReturn: "+$25/week",
     highlighted: true,
@@ -102,7 +102,7 @@ export const pricingPackages = [
     name: "1-Bedroom",
     totes: 30,
     price2Week: "$119",
-    price4Week: "$89",
+    price4Week: "$179",
     includes: "30 totes + dolly",
     lateReturn: "+$25/week",
     highlighted: false,
@@ -112,7 +112,7 @@ export const pricingPackages = [
     name: "2-Bedroom",
     totes: 40,
     price2Week: "$149",
-    price4Week: "$112",
+    price4Week: "$224",
     includes: "40 totes + dolly",
     lateReturn: "+$30/week",
     highlighted: false,
@@ -122,7 +122,7 @@ export const pricingPackages = [
     name: "3-Bedroom",
     totes: 50,
     price2Week: "$189",
-    price4Week: "$142",
+    price4Week: "$284",
     includes: "50 totes + dolly",
     lateReturn: "+$30/week",
     highlighted: true,
@@ -132,7 +132,7 @@ export const pricingPackages = [
     name: "4-Bedroom",
     totes: 75,
     price2Week: "$249",
-    price4Week: "$187",
+    price4Week: "$374",
     includes: "75 totes + dolly",
     lateReturn: "+$35/week",
     highlighted: false,
@@ -142,7 +142,7 @@ export const pricingPackages = [
     name: "5-Bedroom",
     totes: 100,
     price2Week: "$339",
-    price4Week: "$254",
+    price4Week: "$509",
     includes: "100 totes + dolly",
     lateReturn: "+$35/week",
     highlighted: false,
@@ -161,7 +161,7 @@ export function rentalPriceSuffix(period: RentalPeriod): string {
 
 /** EDIT — directly under the package grid (rental terms) */
 export const pricingRentalWindow =
-  "All packages include your choice of a 2-week or 4-week rental. Four-week packages are 25% off the 2-week rate.";
+  "All packages include your choice of a 2-week or 4-week rental.";
 
 /** EDIT — note under the grid (dolly is bundled in every tier above) */
 export const pricingFootnote = {
@@ -204,7 +204,7 @@ export const faq = {
   items: [
     {
       q: "How long can I keep the bins?",
-      a: "Choose a 2-week rental or save 25% with a 4-week rental—enough time for most pack-and-move timelines. Need more time? Ask in your notes and we'll work with you.",
+      a: "Choose a 2-week rental or a 4-week rental at 1.5× the 2-week rate—enough time for most pack-and-move timelines. Need more time? Ask in your notes and we'll work with you.",
     },
     {
       q: "What if my move date changes?",
