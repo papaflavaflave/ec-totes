@@ -9,6 +9,13 @@ import {
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { reservationFormSchema, type ReservationFormValues } from "@/lib/form-schema";
+import type { RentalPeriod } from "@/content/site";
+import {
+  priceForPeriod,
+  pricingPackages,
+  rentalPeriodOptions,
+  rentalPriceSuffix,
+} from "@/content/site";
 
 const defaultValues: DefaultValues<ReservationFormValues> = {
   firstName: "",
@@ -20,9 +27,10 @@ const defaultValues: DefaultValues<ReservationFormValues> = {
   preferredPickupDate: "",
   currentAddress: "",
   newAddress: "",
+  rentalPeriod: "2-week",
+  packageId: "studio",
   notes: "",
   realtorName: "",
-  binCount: undefined,
 };
 
 function YesNoField({
@@ -76,11 +84,14 @@ export function ReservationForm() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<ReservationFormValues>({
     resolver: zodResolver(reservationFormSchema) as Resolver<ReservationFormValues>,
     defaultValues,
   });
+
+  const rentalPeriod = (watch("rentalPeriod") ?? "2-week") as RentalPeriod;
 
   async function onSubmit(data: ReservationFormValues) {
     setStatus("idle");
@@ -286,24 +297,58 @@ export function ReservationForm() {
         )}
       </div>
 
-      <div>
-        <label htmlFor="binCount" className="text-sm font-medium text-zinc-800">
-          Number of bins needed
-        </label>
-        <input
-          id="binCount"
-          type="number"
-          min={1}
-          step={1}
-          inputMode="numeric"
-          aria-invalid={!!errors.binCount}
-          className={inputClass}
-          {...register("binCount")}
-        />
-        {errors.binCount && (
-          <p className="mt-1 text-sm text-red-600">{errors.binCount.message}</p>
+      <fieldset className="space-y-2">
+        <legend className="text-sm font-medium text-zinc-800">Rental period</legend>
+        <div className="flex flex-wrap gap-4" role="radiogroup" aria-label="Rental period">
+          {rentalPeriodOptions.map((opt) => (
+            <label
+              key={opt.value}
+              className="flex min-h-[44px] cursor-pointer items-center gap-2 text-sm"
+            >
+              <input
+                type="radio"
+                value={opt.value}
+                className="h-4 w-4 accent-[var(--accent)]"
+                {...register("rentalPeriod")}
+              />
+              {opt.label}
+            </label>
+          ))}
+        </div>
+        {errors.rentalPeriod && (
+          <p className="text-sm text-red-600" role="alert">
+            {errors.rentalPeriod.message}
+          </p>
         )}
-      </div>
+      </fieldset>
+
+      <fieldset className="space-y-2">
+        <legend className="text-sm font-medium text-zinc-800">Package</legend>
+        <div className="flex flex-col gap-3" role="radiogroup" aria-label="Package">
+          {pricingPackages.map((pkg) => (
+            <label
+              key={pkg.id}
+              className="flex min-h-[44px] cursor-pointer items-start gap-2 text-sm"
+            >
+              <input
+                type="radio"
+                value={pkg.id}
+                className="mt-1 h-4 w-4 shrink-0 accent-[var(--accent)]"
+                {...register("packageId")}
+              />
+              <span>
+                {pkg.name} – {pkg.totes} totes: {priceForPeriod(pkg, rentalPeriod)}{" "}
+                {rentalPriceSuffix(rentalPeriod)}
+              </span>
+            </label>
+          ))}
+        </div>
+        {errors.packageId && (
+          <p className="text-sm text-red-600" role="alert">
+            {errors.packageId.message}
+          </p>
+        )}
+      </fieldset>
 
       <div className="space-y-6">
         <YesNoField

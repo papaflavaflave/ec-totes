@@ -1,5 +1,19 @@
 import { Resend } from "resend";
+import { pricingPackages, rentalPeriodOptions, type RentalPeriod } from "@/content/site";
 import type { ReservationFormValues } from "@/lib/form-schema";
+
+function formatRentalPeriod(period: RentalPeriod): string {
+  const opt = rentalPeriodOptions.find((o) => o.value === period);
+  return opt?.label ?? period;
+}
+
+function formatPackageLine(data: ReservationFormValues): string {
+  const pkg = pricingPackages.find((p) => p.id === data.packageId);
+  if (!pkg) return data.packageId;
+  const price = data.rentalPeriod === "2-week" ? pkg.price2Week : pkg.price4Week;
+  const suffix = data.rentalPeriod === "2-week" ? "(2-week)" : "(4-week)";
+  return `${pkg.name} (${pkg.totes} totes) — ${price} ${suffix}`;
+}
 
 /**
  * Central place for what happens after a valid reservation POST.
@@ -45,7 +59,8 @@ async function sendReservationEmail(data: ReservationFormValues): Promise<boolea
     ["Preferred pickup", data.preferredPickupDate],
     ["Current address", data.currentAddress],
     ["New address", data.newAddress],
-    ["Bins needed", String(data.binCount)],
+    ["Rental period", formatRentalPeriod(data.rentalPeriod)],
+    ["Package", formatPackageLine(data)],
     ["Dolly needed", formatYesNo(data.dollyNeeded)],
     ["Realtor name", data.realtorName?.trim() || "—"],
     ["Notes", data.notes?.trim() || "—"],

@@ -79,11 +79,20 @@ export const howItWorks = {
  * EDIT PRICING HERE — packages, prices, and “includes” lines (totes + dolly per tier).
  * `highlighted` = yellow “Most Popular” styling in the pricing grid (matches your reference layout).
  */
+export type RentalPeriod = "2-week" | "4-week";
+
+export const rentalPeriodOptions = [
+  { value: "2-week" as const, label: "2-Week Rental" },
+  { value: "4-week" as const, label: "4-Week Rental (Save 25%)" },
+] as const;
+
 export const pricingPackages = [
   {
     id: "studio",
     name: "Studio",
-    price: "$99",
+    totes: 20,
+    price2Week: "$99",
+    price4Week: "$74",
     includes: "20 totes + dolly",
     lateReturn: "+$25/week",
     highlighted: true,
@@ -91,7 +100,9 @@ export const pricingPackages = [
   {
     id: "1-bed",
     name: "1-Bedroom",
-    price: "$119",
+    totes: 30,
+    price2Week: "$119",
+    price4Week: "$89",
     includes: "30 totes + dolly",
     lateReturn: "+$25/week",
     highlighted: false,
@@ -99,7 +110,9 @@ export const pricingPackages = [
   {
     id: "2-bed",
     name: "2-Bedroom",
-    price: "$149",
+    totes: 40,
+    price2Week: "$149",
+    price4Week: "$112",
     includes: "40 totes + dolly",
     lateReturn: "+$30/week",
     highlighted: false,
@@ -107,7 +120,9 @@ export const pricingPackages = [
   {
     id: "3-bed",
     name: "3-Bedroom",
-    price: "$189",
+    totes: 50,
+    price2Week: "$189",
+    price4Week: "$142",
     includes: "50 totes + dolly",
     lateReturn: "+$30/week",
     highlighted: true,
@@ -115,7 +130,9 @@ export const pricingPackages = [
   {
     id: "4-bed",
     name: "4-Bedroom",
-    price: "$249",
+    totes: 75,
+    price2Week: "$249",
+    price4Week: "$187",
     includes: "75 totes + dolly",
     lateReturn: "+$35/week",
     highlighted: false,
@@ -123,21 +140,33 @@ export const pricingPackages = [
   {
     id: "5-bed",
     name: "5-Bedroom",
-    price: "$339",
+    totes: 100,
+    price2Week: "$339",
+    price4Week: "$254",
     includes: "100 totes + dolly",
     lateReturn: "+$35/week",
     highlighted: false,
   },
 ] as const;
 
+export type PricingPackage = (typeof pricingPackages)[number];
+
+export function priceForPeriod(pkg: PricingPackage, period: RentalPeriod): string {
+  return period === "2-week" ? pkg.price2Week : pkg.price4Week;
+}
+
+export function rentalPriceSuffix(period: RentalPeriod): string {
+  return period === "2-week" ? "(2-week)" : "(4-week)";
+}
+
 /** EDIT — directly under the package grid (rental terms) */
 export const pricingRentalWindow =
-  "All packages include a 7-day rental window.";
+  "All packages include your choice of a 2-week or 4-week rental. Four-week packages are 25% off the 2-week rate.";
 
 /** EDIT — note under the grid (dolly is bundled in every tier above) */
 export const pricingFootnote = {
   line:
-    "Every package includes a dolly. Delivery and pickup are included in our service area—we’ll confirm timing when you reserve. Totes are included for 7 days. Late returns are charged per additional 7-day period.",
+    "Every package includes a dolly. Delivery and pickup are included in our service area—we'll confirm timing when you reserve. Totes are included for the full rental period. Late returns are charged per additional 7-day period.",
 };
 
 export const whyTotes = {
@@ -175,7 +204,7 @@ export const faq = {
   items: [
     {
       q: "How long can I keep the bins?",
-      a: "Our standard rental window is 7 days—enough for most pack-and-move timelines. Need more time? Ask in your notes and we'll work with you.",
+      a: "Choose a 2-week rental or save 25% with a 4-week rental—enough time for most pack-and-move timelines. Need more time? Ask in your notes and we'll work with you.",
     },
     {
       q: "What if my move date changes?",

@@ -4,6 +4,15 @@ const yesNo = z.enum(["yes", "no"], {
   message: "Please choose yes or no",
 });
 
+const rentalPeriod = z.enum(["2-week", "4-week"], {
+  message: "Please choose a rental period",
+});
+
+const packageId = z.enum(
+  ["studio", "1-bed", "2-bed", "3-bed", "4-bed", "5-bed"],
+  { message: "Please choose a package" },
+);
+
 export const reservationFormSchema = z.object({
   firstName: z.string().min(1, "First name is required").max(100),
   lastName: z.string().min(1, "Last name is required").max(100),
@@ -17,7 +26,8 @@ export const reservationFormSchema = z.object({
   preferredPickupDate: z.string().min(1, "Preferred pickup date is required"),
   currentAddress: z.string().min(1, "Current address is required").max(500),
   newAddress: z.string().min(1, "New address is required").max(500),
-  binCount: z.coerce.number().int().min(1, "At least 1 bin").max(500),
+  rentalPeriod,
+  packageId,
   dollyNeeded: yesNo,
   realtorName: z.string().max(200),
   notes: z.string().max(2000),

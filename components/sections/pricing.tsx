@@ -1,6 +1,19 @@
-import { pricingFootnote, pricingPackages, pricingRentalWindow } from "@/content/site";
+"use client";
+
+import { useState } from "react";
+import {
+  type RentalPeriod,
+  pricingFootnote,
+  pricingPackages,
+  pricingRentalWindow,
+  priceForPeriod,
+  rentalPeriodOptions,
+  rentalPriceSuffix,
+} from "@/content/site";
 
 export function Pricing() {
+  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>("2-week");
+
   return (
     <section
       id="pricing"
@@ -14,6 +27,29 @@ export function Pricing() {
         <p className="mt-2 max-w-2xl text-zinc-600">
           Pick the tier that fits your home—starting rates; we&apos;ll confirm details when you reserve.
         </p>
+
+        <fieldset className="mt-8 space-y-2">
+          <legend className="text-sm font-medium text-zinc-800">Rental period</legend>
+          <div className="flex flex-wrap gap-4" role="radiogroup" aria-label="Rental period">
+            {rentalPeriodOptions.map((opt) => (
+              <label
+                key={opt.value}
+                className="flex min-h-[44px] cursor-pointer items-center gap-2 text-sm"
+              >
+                <input
+                  type="radio"
+                  name="pricing-rental-period"
+                  value={opt.value}
+                  checked={rentalPeriod === opt.value}
+                  onChange={() => setRentalPeriod(opt.value)}
+                  className="h-4 w-4 accent-[var(--accent)]"
+                />
+                {opt.label}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {pricingPackages.map((pkg) => (
             <article
@@ -29,7 +65,13 @@ export function Pricing() {
               ) : null}
               <h3 className="text-xl font-bold text-zinc-900">{pkg.name}</h3>
               <p className="mt-4">
-                <span className="text-4xl font-bold text-zinc-900">{pkg.price}</span>
+                <span className="text-4xl font-bold text-zinc-900">
+                  {priceForPeriod(pkg, rentalPeriod)}
+                </span>
+                <span className="text-2xl font-semibold text-zinc-600">
+                  {" "}
+                  {rentalPriceSuffix(rentalPeriod)}
+                </span>
               </p>
               <p className="mt-3 text-sm font-medium text-zinc-700">
                 Includes: <span className="text-zinc-900">{pkg.includes}</span>
