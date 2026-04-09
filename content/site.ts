@@ -85,6 +85,7 @@ export const pricingPackages = [
     name: "Studio",
     price: "$99",
     includes: "20 totes + dolly",
+    lateReturn: "+$25/week",
     highlighted: true,
   },
   {
@@ -92,6 +93,7 @@ export const pricingPackages = [
     name: "1-Bedroom",
     price: "$119",
     includes: "30 totes + dolly",
+    lateReturn: "+$25/week",
     highlighted: false,
   },
   {
@@ -99,6 +101,7 @@ export const pricingPackages = [
     name: "2-Bedroom",
     price: "$149",
     includes: "40 totes + dolly",
+    lateReturn: "+$30/week",
     highlighted: false,
   },
   {
@@ -106,6 +109,7 @@ export const pricingPackages = [
     name: "3-Bedroom",
     price: "$189",
     includes: "50 totes + dolly",
+    lateReturn: "+$30/week",
     highlighted: true,
   },
   {
@@ -113,6 +117,7 @@ export const pricingPackages = [
     name: "4-Bedroom",
     price: "$249",
     includes: "75 totes + dolly",
+    lateReturn: "+$35/week",
     highlighted: false,
   },
   {
@@ -120,18 +125,19 @@ export const pricingPackages = [
     name: "5-Bedroom",
     price: "$339",
     includes: "100 totes + dolly",
+    lateReturn: "+$35/week",
     highlighted: false,
   },
 ] as const;
 
 /** EDIT — directly under the package grid (rental terms) */
 export const pricingRentalWindow =
-  "All packages include a 14-day rental window. Extensions are $12/day.";
+  "All packages include a 7-day rental window.";
 
 /** EDIT — note under the grid (dolly is bundled in every tier above) */
 export const pricingFootnote = {
   line:
-    "Every package includes a dolly. Delivery and pickup are included in our service area—we’ll confirm timing when you reserve.",
+    "Every package includes a dolly. Delivery and pickup are included in our service area—we’ll confirm timing when you reserve. Totes are included for 7 days. Late returns are charged per additional 7-day period.",
 };
 
 export const whyTotes = {
@@ -169,7 +175,7 @@ export const faq = {
   items: [
     {
       q: "How long can I keep the bins?",
-      a: "Our standard rental window is two weeks—enough for most pack-and-move timelines. Need more time? Ask in your notes and we'll work with you.",
+      a: "Our standard rental window is 7 days—enough for most pack-and-move timelines. Need more time? Ask in your notes and we'll work with you.",
     },
     {
       q: "What if my move date changes?",

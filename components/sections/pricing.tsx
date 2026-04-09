@@ -34,6 +34,9 @@ export function Pricing() {
               <p className="mt-3 text-sm font-medium text-zinc-700">
                 Includes: <span className="text-zinc-900">{pkg.includes}</span>
               </p>
+              <p className="mt-2 text-sm font-medium text-zinc-700">
+                Late return: <span className="text-zinc-900">{pkg.lateReturn}</span>
+              </p>
               <a
                 href="#reserve"
                 className={`mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded-xl px-4 text-center text-sm font-bold transition ${
