@@ -47,7 +47,6 @@ async function sendReservationEmail(data: ReservationFormValues): Promise<boolea
     ["New address", data.newAddress],
     ["Bins needed", String(data.binCount)],
     ["Dolly needed", formatYesNo(data.dollyNeeded)],
-    ["Stairs involved", formatYesNo(data.stairsInvolved)],
     ["Realtor name", data.realtorName?.trim() || "—"],
     ["Notes", data.notes?.trim() || "—"],
   ];

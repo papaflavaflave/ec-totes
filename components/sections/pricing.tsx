@@ -1,4 +1,4 @@
-import { pricingFootnote, pricingPackages } from "@/content/site";
+import { pricingFootnote, pricingPackages, pricingRentalWindow } from "@/content/site";
 
 export function Pricing() {
   return (
@@ -47,7 +47,8 @@ export function Pricing() {
             </article>
           ))}
         </div>
-        <p className="mt-8 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-center text-sm text-zinc-700">
+        <p className="mt-6 text-center text-sm text-zinc-700">{pricingRentalWindow}</p>
+        <p className="mt-5 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-center text-sm text-zinc-700">
           {pricingFootnote.line}
         </p>
       </div>

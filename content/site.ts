@@ -124,6 +124,10 @@ export const pricingPackages = [
   },
 ] as const;
 
+/** EDIT — directly under the package grid (rental terms) */
+export const pricingRentalWindow =
+  "All packages include a 14-day rental window. Extensions are $12/day.";
+
 /** EDIT — note under the grid (dolly is bundled in every tier above) */
 export const pricingFootnote = {
   line:

@@ -19,7 +19,6 @@ export const reservationFormSchema = z.object({
   newAddress: z.string().min(1, "New address is required").max(500),
   binCount: z.coerce.number().int().min(1, "At least 1 bin").max(500),
   dollyNeeded: yesNo,
-  stairsInvolved: yesNo,
   realtorName: z.string().max(200),
   notes: z.string().max(2000),
 });

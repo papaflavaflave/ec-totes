@@ -32,7 +32,7 @@ function YesNoField({
   register,
 }: {
   legend: string;
-  name: "dollyNeeded" | "stairsInvolved";
+  name: "dollyNeeded";
   error?: string;
   register: UseFormRegister<ReservationFormValues>;
 }) {
@@ -209,6 +209,7 @@ export function ReservationForm() {
           <input
             id="moveDate"
             type="date"
+            required
             aria-invalid={!!errors.moveDate}
             className={inputClass}
             {...register("moveDate")}
@@ -224,6 +225,7 @@ export function ReservationForm() {
           <input
             id="preferredDeliveryDate"
             type="date"
+            required
             aria-invalid={!!errors.preferredDeliveryDate}
             className={inputClass}
             {...register("preferredDeliveryDate")}
@@ -239,6 +241,7 @@ export function ReservationForm() {
           <input
             id="preferredPickupDate"
             type="date"
+            required
             aria-invalid={!!errors.preferredPickupDate}
             className={inputClass}
             {...register("preferredPickupDate")}
@@ -307,12 +310,6 @@ export function ReservationForm() {
           legend="Dolly needed?"
           name="dollyNeeded"
           error={errors.dollyNeeded?.message}
-          register={register}
-        />
-        <YesNoField
-          legend="Stairs involved?"
-          name="stairsInvolved"
-          error={errors.stairsInvolved?.message}
           register={register}
         />
         <div>
