@@ -21,7 +21,6 @@ export const reservationFormSchema = z.object({
     .string()
     .min(10, "Enter a phone number we can reach you on")
     .max(40),
-  moveDate: z.string().min(1, "Move date is required"),
   preferredDeliveryDate: z.string().min(1, "Preferred delivery date is required"),
   preferredPickupDate: z.string().min(1, "Preferred pickup date is required"),
   currentAddress: z.string().min(1, "Current address is required").max(500),

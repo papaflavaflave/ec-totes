@@ -54,7 +54,6 @@ async function sendReservationEmail(data: ReservationFormValues): Promise<boolea
     ["Name", `${data.firstName} ${data.lastName}`],
     ["Email", data.email],
     ["Phone", data.phone],
-    ["Move date", data.moveDate],
     ["Preferred delivery", data.preferredDeliveryDate],
     ["Preferred pickup", data.preferredPickupDate],
     ["Current address", data.currentAddress],

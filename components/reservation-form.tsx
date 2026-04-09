@@ -22,7 +22,6 @@ const defaultValues: DefaultValues<ReservationFormValues> = {
   lastName: "",
   email: "",
   phone: "",
-  moveDate: "",
   preferredDeliveryDate: "",
   preferredPickupDate: "",
   currentAddress: "",
@@ -212,23 +211,7 @@ export function ReservationForm() {
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <div>
-          <label htmlFor="moveDate" className="text-sm font-medium text-zinc-800">
-            Move date
-          </label>
-          <input
-            id="moveDate"
-            type="date"
-            required
-            aria-invalid={!!errors.moveDate}
-            className={inputClass}
-            {...register("moveDate")}
-          />
-          {errors.moveDate && (
-            <p className="mt-1 text-sm text-red-600">{errors.moveDate.message}</p>
-          )}
-        </div>
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="preferredDeliveryDate" className="text-sm font-medium text-zinc-800">
             Preferred delivery
