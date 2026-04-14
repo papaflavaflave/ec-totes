@@ -92,6 +92,22 @@ export function ReservationForm() {
 
   const rentalPeriod = (watch("rentalPeriod") ?? "2-week") as RentalPeriod;
 
+  function trackReservationSubmitted(data: ReservationFormValues) {
+    if (typeof window === "undefined") return;
+
+    const analyticsWindow = window as Window & {
+      gtag?: (...args: unknown[]) => void;
+    };
+
+    analyticsWindow.gtag?.("event", "reservation_submitted", {
+      rental_period: data.rentalPeriod,
+      package_id: data.packageId,
+      dolly_needed: data.dollyNeeded,
+      has_realtor: Boolean(data.realtorName),
+      page_path: window.location.pathname,
+    });
+  }
+
   async function onSubmit(data: ReservationFormValues) {
     setStatus("idle");
     setBanner(null);
@@ -119,6 +135,7 @@ export function ReservationForm() {
 
       setStatus("success");
       setBanner(payload.message ?? "Thanks — we received your request.");
+      trackReservationSubmitted(data);
       reset(defaultValues);
     } catch {
       setStatus("error");
